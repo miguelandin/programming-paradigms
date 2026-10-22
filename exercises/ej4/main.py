@@ -10,7 +10,7 @@ load_dotenv()
 API_KEY = os.getenv("key")
 
 
-def show_info(data: dict):
+def show_info(data: dict[str, Any]):
     print("Movie: ", data["Title"])
     print("Director: ", data["Director"])
     print("Released: ", data["Released"])
@@ -32,14 +32,14 @@ def show_error(message: str):
     print("ERROR: ", message)
 
 
-def get_api_data(title: str, key: str | None) -> dict:
+def get_api_data(title: str, key: str | None) -> dict[str, Any]:
     if not key:
         raise KeyError("API key not found in .env")
 
     return requests.get(f"https://www.omdbapi.com/?t={title}&apikey={key}").json()
 
 
-def get_movie_data(api_data: dict, on_succes: Callable, on_error: Callable):
+def get_movie_data(api_data: dict[str, Any], on_succes: Callable, on_error: Callable):
     if api_data["Response"] == "True":
         on_succes(api_data)
     else:
