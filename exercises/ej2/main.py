@@ -1,32 +1,32 @@
-import pygame
-from pygame.typing import Point
+import math
+phi = ( 1 + math.sqrt(5) ) / 2
 
-pygame.init()
-screen = pygame.display.set_mode((1280, 720))
-clock = pygame.time.Clock()
-running = True
-
-f_range = int(input("rango de la secuencia: "))
-secuence: list = [0, 1]
-
-points: list[tuple] = []
-for i in range(f_range-1):
-    secuence.append(secuence[i]+secuence[i+1])
-    points.append((secuence[i], secuence[i+1]))
-
-print(points)
+def getFibbonacci(length:int = 0) -> list:
+    sequence:list = [0,1]
+    for i in range(1,length):
+        sequence.append(sequence[i-1]+sequence[i])
+    return sequence
 
 
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+def filterSequence(sequence:list, multipli:float)-> list:
+    filt_seq : list = []
+    for i in sequence:
+        if(i % multipli == 0):
+            filt_seq.append(i)
+    return filt_seq
 
-    screen.fill("white")
 
-    pygame.draw.lines(screen, "red", False, points, 5)
-    pygame.display.flip()
+def findProportion(sequence:list, error = 0.0001):
+    for i in range(2,len(sequence)):
+        if sequence[i]/sequence[i-1] % phi <= error:
+            return i, True
+    return -1, False 
 
-    clock.tick(60)
 
-pygame.quit()
+print(filterSequence(getFibbonacci(int(input("sequence length: "))),int(input("filter multipli: "))))
+
+index, found = findProportion(getFibbonacci(int(input("sequence length: "))))
+if(found):
+    print("proportion found whith sequence length: ", index)
+else:
+    print("proportion not found with sequence length: ", index)
