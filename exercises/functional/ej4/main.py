@@ -24,8 +24,8 @@ def show_poster(data: dict[str, Any]):
 
 def download_poster(data: dict[str, Any]):
     url: str = data["Poster"]
-    name: str = data["Title"] + '.' + url.split('.')[-1]
-    shell.run(["curl", "-L", url, "-o", name])
+    name: str = '.'.join([data["Title"], url.split('.')[-1]])
+    shell.run(["curl", "-L", "-s", url, "-o", name])
 
 
 def show_error(message: str):
