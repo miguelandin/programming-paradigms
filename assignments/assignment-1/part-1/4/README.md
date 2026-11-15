@@ -1,0 +1,3 @@
+En este ejercicio se han creado dos funciones para filtrar de una lista de diccionarios los estudiantes que tengan una media superior de 6:
+- `has_passed`: Recibe un estudiante (un diccionario) y selecciona de él la lista de calificaciones en la cual se calcula la suma de todos sus valores y los divide por la de la lista longitud (calcula la media). Si el resultado es igual o superior de 6 → devuelve True, y en caso opuesto, False.
+- `filter_students`: Aquí simplemente se devuelve un `filter` de la lista de estudiantes y la función anterior como evaluadora para conseguir la lista filtrada de estudiantes.
