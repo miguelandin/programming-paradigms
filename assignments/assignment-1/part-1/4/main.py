@@ -1,12 +1,12 @@
 from typing import Any
 
 
-def has_passed(student: dict["str", Any]) -> bool:
+def has_passed(student: dict[str, Any]) -> bool:
     scores = student["calificaciones"]
     return sum(scores)/len(scores) >= 6
 
 
-def filter_students(students: list[dict["str", Any]]) -> list[dict["str", Any]]:
+def filter_students(students: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return list(filter(has_passed, students))
 
 
