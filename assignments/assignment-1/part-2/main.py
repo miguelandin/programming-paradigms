@@ -103,10 +103,13 @@ if __name__ == "__main__":
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-p", "--password", action="store_true",
                        help="Check if password has been leaked")
+
     group.add_argument(
         "-d", "--domain", help="Check if domain had a data breach")
+
     parser.add_argument("--ntlm", action="store_true",
                         help="Use NTLM  instead of SHA1")
+
     args = parser.parse_args()
 
     if args.password:

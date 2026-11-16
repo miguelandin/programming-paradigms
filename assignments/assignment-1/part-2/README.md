@@ -22,4 +22,10 @@ Para hacer la parte dos de la actividad se han usado muchas funciones para cumpl
 
 11. `parse_domain_breach`: Recibe un diccionario con la respuesta de la API sobre los leakeos de dominios y devuelve cierta información de esta en un string.
 
-12. `get_domain_info`: Callback que se usa cuando se hace una petición de tipo `Ption.Domain`.
+12. `get_domain_info`: Callback que se usa cuando se hace una petición de tipo `Ption.Domain`. Recibe una lista de diccionarios con data breaches registrados. Este iterador lo pasa por un map con la función `parse_domain_breach`. Después con el iterable de salida se junta todo en un string con `.join()`.
+
+13. `sha1`: Convierte un string a hash en sha1.
+
+14. `ntlm`: Convierte un string a hash en ntlm.
+
+15. `main`: En el main se manejan las flags del script con la librería `argparse`.
